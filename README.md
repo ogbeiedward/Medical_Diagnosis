@@ -1,17 +1,5 @@
 # Medical Diagnosis | A Machine Learning-Based Web Application
 
-## Table of Contents
-- [Problem Statement](#problem-statement)
-- [Why This Project?](#why-this-project)
-- [Flow Overview](#flow-overview)
-- [Directory Structure](#directory-structure)
-- [Quick Start](#quick-start)
-- [Technical Details](#technical-details)
-- [Team](#team)
-- [License](#license)
-
----
-
 This repository contains everything needed to deploy a **web application** built with **HTML, CSS, Bootstrap, Machine Learning (ML), and Deep Learning (DL)** on the **GitHub Pages** platform.  
 
 ---
@@ -109,27 +97,3 @@ Pneumonia | Deep Learning (CNN) | 95%
 - [Malaria](https://www.kaggle.com/iarunava/cell-images-for-detecting-malaria)  
 - [Pneumonia](https://www.kaggle.com/paultimothymooney/chest-xray-pneumonia)  
 
-### Model Training Notebooks
-
-- [Heart Disease Prediction](https://github.com/venugopalkadamba/Multi_Disease_Predictor/blob/master/Python%20Notebooks/Heart_Disease_Prediction.ipynb)  
-- [Kidney Disease Prediction](https://github.com/venugopalkadamba/Multi_Disease_Predictor/blob/master/Python%20Notebooks/Kidney_Disease_Prediction.ipynb)  
-- [Liver Disease Prediction](https://github.com/venugopalkadamba/Multi_Disease_Predictor/blob/master/Python%20Notebooks/Liver_Disease_Prediction.ipynb)  
-
----
-
-## License
-This project is licensed under the [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0).  
-
-```
-Copyright © 2025  
-Edward Ogbei  
-
-Licensed under the Apache License, Version 2.0 (the "License");  
-you may not use this file except in compliance with the License.  
-You may obtain a copy of the License at:
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-```
