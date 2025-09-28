@@ -1,77 +1,88 @@
 {% extends 'main.html' %}
 {% block content %}
 
-<div class="row"  style="margin-bottom: 175px;">
-    <div class="col-md-2"></div>
-    <div class="col-md-8">
-        <center><h1>Liver Disease Predictor</h1></center>
-        <div class="card card-body" style="border: 1px solid black;">
-            <form class="form-horizontal" action="{{ url_for('predictPage') }}" method="POST">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <input style="border: 1px solid black;" class="form-control" type="text" name="Age" placeholder="Age">
+<div class="container my-5" style="position: relative; z-index: 2;">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+    <h1 class="text-center mb-4" 
+    style="
+        font-size: 3rem;
+        font-weight: 800;
+        color: white;
+        text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+        letter-spacing: 1px;
+    ">
+    Liver Disease Predictor
+</h1>
+
+
+
+            <div class="card p-4 shadow-lg rounded-4 border-0"
+                 style="background: rgba(255,255,255,0.1); backdrop-filter: blur(10px);">
+
+                <form action="{{ url_for('predictPage') }}" method="POST">
+                    {% set fields = [
+                        {'name':'Age','placeholder':'Age (years)','desc':'Enter your age in years'},
+                        {'name':'Total_Bilirubin','placeholder':'Total Bilirubin (mg/dL)','desc':'Total bilirubin level in blood'},
+                        {'name':'Direct_Bilirubin','placeholder':'Direct Bilirubin (mg/dL)','desc':'Direct bilirubin level'},
+                        {'name':'Alkaline_Phosphotase','placeholder':'Alkaline Phosphatase (U/L)','desc':'Enzyme level indicating liver/bone health'},
+                        {'name':'Alamine_Aminotransferase','placeholder':'ALT (U/L)','desc':'Alanine aminotransferase enzyme level'},
+                        {'name':'Aspartate_Aminotransferase','placeholder':'AST (U/L)','desc':'Aspartate aminotransferase enzyme level'},
+                        {'name':'Total_Protiens','placeholder':'Total Proteins (g/dL)','desc':'Total protein in blood'},
+                        {'name':'Albumin','placeholder':'Albumin (g/dL)','desc':'Albumin level in blood'},
+                        {'name':'Albumin_and_Globulin_Ratio','placeholder':'Albumin/Globulin Ratio','desc':'Ratio of albumin to globulin'},
+                        {'name':'Gender_Male','placeholder':'Gender (M=1, F=0)','desc':'Select 1 for male, 0 for female'}
+                    ] %}
+
+                    <div class="row">
+                        {% for field in fields %}
+                        <div class="col-md-6 mb-3">
+                            <input type="text" name="{{ field.name }}" class="form-control form-control-lg"
+                                   placeholder="{{ field.placeholder }}"
+                                   style="border-radius: 0.75rem; border: none; background: rgba(255,255,255,0.15); color: white; padding: 0.75rem 1rem;">
+                            {% if field.desc %}
+                            <small class="form-text text-light">{{ field.desc }}</small>
+                            {% endif %}
                         </div>
+                        {% endfor %}
                     </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <input style="border: 1px solid black;" class="form-control" type="text" name="Total_Bilirubin" placeholder="Total Bilirubin">
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <input style="border: 1px solid black;" class="form-control" type="text" name="Direct_Bilirubin" placeholder="Direct Bilirubin">
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <input style="border: 1px solid black;" class="form-control" type="text" name="Alkaline_Phosphotase" placeholder="Alkaline Phosphotase">
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <input style="border: 1px solid black;" class="form-control" type="text" name="Alamine_Aminotransferase" placeholder="Alamine Aminotransferase">
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <input style="border: 1px solid black;" class="form-control" type="text" name="Aspartate_Aminotransferase" placeholder="Aspartate Aminotransferase">
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <input style="border: 1px solid black;" class="form-control" type="text" name="Total_Protiens" placeholder="Total Protiens">
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <input style="border: 1px solid black;" class="form-control" type="text" name="Albumin" placeholder="Albumin">
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <input style="border: 1px solid black;" class="form-control" type="text" name="Albumin_and_Globulin_Ratio" placeholder="Albumin and Globulin Ratio">
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <input style="border: 1px solid black;" class="form-control" type="text" name="Gender_Male" placeholder="Gender(Male: 1, Female: 0)">
-                        </div>
-                    </div>
-                </div>
-                <input type="submit" class="btn btn-info btn-block" value="Predict">
-            </form>
+
+                    <button type="submit" class="btn btn-gradient w-100 py-2 fw-bold mt-3" style="border-radius: 0.75rem; font-size: 1.1rem;">
+                        Predict
+                    </button>
+                </form>
+
+            </div>
         </div>
     </div>
-    <div class="col-md-2"></div>
 </div>
+
+<!-- Background -->
+<div style="position: fixed; top:0; left:0; width:100%; height:100%; z-index:1; background: linear-gradient(135deg, #1e3c72, #2a5298); overflow:hidden;">
+    <svg style="position:absolute; top:0; left:0; width:100%; height:100%;">
+        <defs>
+            <pattern id="dots" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+                <circle cx="2" cy="2" r="1" fill="rgba(255,255,255,0.05)" />
+            </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#dots)" />
+    </svg>
+</div>
+
+<style>
+.btn-gradient {
+    background: linear-gradient(135deg, #00c6ff, #0072ff);
+    color: white;
+    border: none;
+    transition: all 0.3s ease;
+}
+.btn-gradient:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+input::placeholder {
+    color: rgba(255,255,255,0.7) !important;
+}
+</style>
 
 {% endblock %}

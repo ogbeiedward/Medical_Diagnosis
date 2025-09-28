@@ -1,43 +1,92 @@
 {% extends 'main.html' %}
 {% block content %}
+
 <script>
-    function readURL(input) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-
-                reader.onload = function (e) {
-                    $('#blah')
-                        .attr('src', e.target.result)
-                        .width(500)
-                        .height(500);
-                };
-
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $('#blah')
+                .attr('src', e.target.result)
+                .width(400)
+                .height(400);
+        };
+        reader.readAsDataURL(input.files[0]);
+    }
+}
 </script>
-{% if message %}
-        <div class="alert alert-danger">{{ message }}</div>
-    {% endif %}
-<div class="row"  style="margin-bottom: 300px;">
-    <div class="col-md-3"></div>
-    <div class="col-md-6">
-        <center><h1>Malaria Predictor</h1></center>
-        <div class="card card-body">
-            <center><h3>Please upload the image of the cell</h3></center>
-            <form class="form-horizontal" action="{{ url_for('malariapredictPage') }}" method="POST" enctype="multipart/form-data">
-                <center>
-                <input onchange="readURL(this);" type="file" name="image" placeholder="Upload Image">
-                <br>
-                <br>
-                <img class="img-fluid" id="blah" src="#" alt="UPLOADED IMAGE WILL APPEAR HERE" />
-                <br>
-                <br>
-                <input class="btn btn-info" type="submit">
-                </center>
-            </form>
+
+<div class="container my-5" style="position: relative; z-index: 2;">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+
+            <!-- Page Heading -->
+            <h1 class="text-center mb-4" 
+                style="
+                    font-size: 3rem;
+                    font-weight: 800;
+                    color: white;
+                    text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+                    letter-spacing: 1px;
+                ">
+                Malaria Predictor
+            </h1>
+
+            <!-- Card -->
+            <div class="card p-4 shadow-lg rounded-4 border-0"
+                 style="background: rgba(255,255,255,0.1); backdrop-filter: blur(10px);">
+
+                <h3 class="text-center mb-4 text-light">Upload an image of the cell</h3>
+
+                <form class="form-horizontal text-center" action="{{ url_for('malariapredictPage') }}" method="POST" enctype="multipart/form-data">
+                    <input onchange="readURL(this);" type="file" name="image" class="form-control mb-3"
+                           style="border-radius: 0.75rem; border: none; background: rgba(255,255,255,0.15); color: white; padding: 0.75rem 1rem;">
+                    <img class="img-fluid mb-3 rounded-4 shadow" id="blah" src="#" alt="Uploaded image will appear here" style="max-width: 400px; max-height: 400px;" />
+                    <button type="submit" class="btn btn-gradient w-100 py-2 fw-bold mt-2" style="border-radius: 0.75rem; font-size: 1.1rem;">
+                        Predict
+                    </button>
+                </form>
+
+            </div>
         </div>
     </div>
-    <div class="col-md-3"></div>
 </div>
+
+<!-- Background -->
+<div style="position: fixed; top:0; left:0; width:100%; height:100%; z-index:1; background: linear-gradient(135deg, #1e3c72, #2a5298); overflow:hidden;">
+    <svg style="position:absolute; top:0; left:0; width:100%; height:100%;">
+        <defs>
+            <pattern id="dots" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+                <circle cx="2" cy="2" r="1" fill="rgba(255,255,255,0.05)" />
+            </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#dots)" />
+    </svg>
+</div>
+
+<style>
+.btn-gradient {
+    background: linear-gradient(135deg, #00c6ff, #0072ff);
+    color: white;
+    border: none;
+    transition: all 0.3s ease;
+}
+.btn-gradient:hover {
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 8px 20px rgba(0,198,255,0.5);
+}
+input::placeholder {
+    color: rgba(255,255,255,0.7) !important;
+}
+input:focus {
+    outline: none;
+    box-shadow: 0 0 10px rgba(0,198,255,0.7);
+    background: rgba(255,255,255,0.2);
+}
+.card:hover {
+    transform: translateY(-3px);
+    transition: transform 0.3s ease;
+}
+</style>
+
 {% endblock %}

@@ -1,99 +1,95 @@
 {% extends 'main.html' %}
 {% block content %}
 
-<div class="row" style="margin-bottom: 175px;">
-    <div class="col-md-2"></div>
-    <div class="col-md-8">
-        <center><h1>Heart Disease Predictor</h1></center>
-        <div class="card card-body" style="border: 1px solid black;">
-            <form class="form-horizontal" action="{{ url_for('predictPage') }}" method="POST">
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <input style="border: 1px solid black;" class="form-control" type="text" name="age" placeholder="age">
-                            <p>age in years eg: 29-77</p>
+<div class="container my-5" style="position: relative; z-index: 2; font-family: 'Poppins', sans-serif;">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+           
+			
+			<h1 class="text-center mb-4" 
+    style="
+        font-size: 3rem;
+        font-weight: 800;
+        color: white;
+        text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+        letter-spacing: 1px;
+    ">
+    Heart Disease Predictor
+</h1>
+
+
+            <div class="card p-4 shadow-lg rounded-4 border-0"
+                 style="background: rgba(20, 20, 30, 0.75); backdrop-filter: blur(15px); color: #f0f0f0;">
+
+                <form action="{{ url_for('predictPage') }}" method="POST">
+                    {% set fields = [
+                        {'name':'age','placeholder':'Age','desc':'Age in years (29-77)'},
+                        {'name':'sex','placeholder':'Sex (Male:1, Female:0)','desc':''},
+                        {'name':'cp','placeholder':'Chest Pain Type','desc':'0 to 3 as worst'},
+                        {'name':'trestbps','placeholder':'Resting BP (mm Hg)','desc':''},
+                        {'name':'chol','placeholder':'Serum Cholesterol (mg/dl)','desc':''},
+                        {'name':'fbs','placeholder':'Fasting Blood Sugar >120mg/dl (1 = true; 0 = false)','desc':''},
+                        {'name':'restecg','placeholder':'Resting ECG Results','desc':'0, 1'},
+                        {'name':'thalach','placeholder':'Max Heart Rate Achieved','desc':'71-202'},
+                        {'name':'exang','placeholder':'Exercise Induced Angina (1 = yes; 0 = no)','desc':''},
+                        {'name':'oldpeak','placeholder':'ST Depression Induced by Exercise','desc':''},
+                        {'name':'slope','placeholder':'Slope of Peak Exercise ST Segment','desc':''},
+                        {'name':'ca','placeholder':'Number of Major Vessels (0-3)','desc':''},
+                        {'name':'thal','placeholder':'3=Normal; 6=Fixed Defect; 7=Reversable Defect','desc':''}
+                    ] %}
+
+                    <div class="row">
+                        {% for field in fields %}
+                        <div class="col-md-4 mb-3">
+                            <input type="text" name="{{ field.name }}" class="form-control form-control-lg"
+                                   placeholder="{{ field.placeholder }}"
+                                   style="border-radius: 0.75rem; border: none; background: rgba(255,255,255,0.05); color: #e0e0e0; padding: 0.75rem 1rem; box-shadow: inset 0 0 10px rgba(0,198,255,0.2);">
+                            {% if field.desc %}
+                            <small class="form-text text-light">{{ field.desc }}</small>
+                            {% endif %}
                         </div>
+                        {% endfor %}
                     </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <input style="border: 1px solid black;" class="form-control" type="text" name="sex" placeholder="sex(Male:1, female:0)">
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <input style="border: 1px solid black;" class="form-control" type="text" name="cp" placeholder="chest pain type"></div>
-                            <p>0 to 3 as worst</p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <input style="border: 1px solid black;" class="form-control" type="text" name="trestbps" placeholder="resting blood pressure in mm Hg">
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <input style="border: 1px solid black;" class="form-control" type="text" name="chol" placeholder="serum cholestoral in mg/dl">
-                            <p>serum cholestoral in mg/dl</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <input style="border: 1px solid black;" class="form-control" type="text" name="fbs" placeholder="fasting blood sugar 120 mg/dl(1 = true; 0 = false)">
-                            <p>(fasting blood sugar 120 mg/dl) (1 = true; 0 = false)</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <input style="border: 1px solid black;" class="form-control" type="text" name="restecg" placeholder="resting electrocardiographic results">
-                            <p>0, 1</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <input style="border: 1px solid black;" class="form-control" type="text" name="thalach" placeholder="maximum heart rate achieved">
-                            <p>eg: 71- 202</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <input style="border: 1px solid black;" class="form-control" type="text" name="exang" placeholder="exercise induced angina (1 = yes; 0 = no)">
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <input style="border: 1px solid black;" class="form-control" type="text" name="oldpeak" placeholder="ST depression induced by exercise relative to rest">
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <input style="border: 1px solid black;" class="form-control" type="text" name="slope" placeholder="the slope of the peak exercise ST segment">
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <input style="border: 1px solid black;" class="form-control" type="text" name="ca" placeholder="number of major vessels (0-3) colored by flourosopy">
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <input style="border: 1px solid black;" class="form-control" type="text" name="thal" placeholder="3 = normal; 6 = fixed defect; 7 = reversable defect">
-                        </div>
-                    </div>
-                    <div class="col-md-4"></div>
-                </div>
-                <input type="submit" class="btn btn-info btn-block" value="Predict">
-            </form>
+
+                    <button type="submit" class="btn btn-gradient w-100 py-2 fw-bold mt-3" style="border-radius: 0.75rem; font-size: 1.1rem;">
+                        Predict
+                    </button>
+                </form>
+
+            </div>
         </div>
     </div>
-    <div class="col-md-2"></div>
 </div>
+
+<!-- Background -->
+<div style="position: fixed; top:0; left:0; width:100%; height:100%; z-index:1; overflow:hidden; background: linear-gradient(135deg, #1f1c2c, #928dab);">
+    <svg style="position:absolute; top:0; left:0; width:100%; height:100%;">
+        <defs>
+            <pattern id="dots" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+                <circle cx="2" cy="2" r="1" fill="rgba(255,255,255,0.05)" />
+            </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#dots)" />
+    </svg>
+</div>
+
+<style>
+.btn-gradient {
+    background: linear-gradient(135deg, #00c6ff, #0072ff);
+    color: white;
+    border: none;
+    transition: all 0.3s ease;
+}
+.btn-gradient:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 8px 20px rgba(0,198,255,0.3);
+}
+input::placeholder {
+    color: rgba(224,224,224,0.7) !important;
+}
+body {
+    font-family: 'Poppins', sans-serif;
+}
+</style>
 
 {% endblock %}

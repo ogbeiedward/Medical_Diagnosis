@@ -45,9 +45,6 @@ The system is built on three main layers:
 ├── Static assets (logos, CSS, JS, fonts, images)
 ├── Templates
 │   ├── Home.html
-│   ├── Contact.html
-│   ├── About.html
-│   ├── Services.html
 │   └── Disease-specific pages (Diabetes, Cancer, etc.)
 ├── app.py
 ├── readme.md
@@ -87,8 +84,6 @@ The system is built on three main layers:
 This project was built using the **Flask Web Framework**. The machine learning and deep learning models were trained on large, publicly available datasets.  
 
 The app can predict the following diseases:
-- Diabetes
-- Breast Cancer
 - Heart Disease
 - Kidney Disease
 - Liver Disease
@@ -99,8 +94,6 @@ The app can predict the following diseases:
 
 Disease | Model Type | Accuracy
 --- | --- | ---
-Diabetes | ML Model | 98.25%
-Breast Cancer | ML Model | 98.25%
 Heart Disease | ML Model | 85.25%
 Kidney Disease | ML Model | 99%
 Liver Disease | ML Model | 78%
@@ -110,8 +103,6 @@ Pneumonia | Deep Learning (CNN) | 95%
 **Note:** Python version `3.6.8` was used for this project.  
 
 ### Datasets
-- [Diabetes](https://www.kaggle.com/uciml/pima-indians-diabetes-database)  
-- [Breast Cancer](https://www.kaggle.com/uciml/breast-cancer-wisconsin-data)  
 - [Heart Disease](https://www.kaggle.com/ronitf/heart-disease-uci)  
 - [Kidney Disease](https://www.kaggle.com/mansoordaku/ckdisease)  
 - [Liver Disease](https://www.kaggle.com/uciml/indian-liver-patient-records)  
@@ -119,8 +110,7 @@ Pneumonia | Deep Learning (CNN) | 95%
 - [Pneumonia](https://www.kaggle.com/paultimothymooney/chest-xray-pneumonia)  
 
 ### Model Training Notebooks
-- [Diabetes Prediction](https://github.com/venugopalkadamba/Multi_Disease_Predictor/blob/master/Python%20Notebooks/Diabetes_Prediction.ipynb)  
-- [Breast Cancer Prediction](https://github.com/venugopalkadamba/Multi_Disease_Predictor/blob/master/Python%20Notebooks/Cancer_Prediction.ipynb)  
+
 - [Heart Disease Prediction](https://github.com/venugopalkadamba/Multi_Disease_Predictor/blob/master/Python%20Notebooks/Heart_Disease_Prediction.ipynb)  
 - [Kidney Disease Prediction](https://github.com/venugopalkadamba/Multi_Disease_Predictor/blob/master/Python%20Notebooks/Kidney_Disease_Prediction.ipynb)  
 - [Liver Disease Prediction](https://github.com/venugopalkadamba/Multi_Disease_Predictor/blob/master/Python%20Notebooks/Liver_Disease_Prediction.ipynb)  

@@ -1,138 +1,110 @@
 {% extends 'main.html' %}
 {% block content %}
 
-<div class="row"  style="margin-bottom: 125px;">
-    <div class="col-md-2"></div>
-    <div class="col-md-8">
-        <center><h1>Kidney Disease Predictor</h1></center>
-        <div class="card card-body" style="border: 1px solid black;">
-            <form class="form-horizontal" action="{{ url_for('predictPage') }}" method="POST">
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <input style="border: 1px solid black;" class="form-control" type="text" name="age" placeholder="age">
-                            <p>Age(numerical) in years</p>
+<!-- Container -->
+<div class="container my-5" style="position: relative; z-index: 2; font-family: 'Poppins', sans-serif;">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            
+
+<h1 class="text-center mb-4" 
+    style="
+        font-size: 3rem;
+        font-weight: 800;
+        color: white;
+        text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+        letter-spacing: 1px;
+    ">
+    Kidney Disease Predictor
+</h1>
+
+
+            <div class="card p-4 shadow-lg rounded-4 border-0"
+                 style="background: rgba(20, 20, 30, 0.75); backdrop-filter: blur(15px); color: #f0f0f0;">
+
+                <form action="{{ url_for('predictPage') }}" method="POST">
+                    {% set fields = [
+                        {'name':'age','placeholder':'Age','desc':'Numerical in years'},
+                        {'name':'bp','placeholder':'Blood Pressure','desc':'mm/Hg'},
+                        {'name':'al','placeholder':'Albumin','desc':'Nominal 0-5'},
+                        {'name':'su','placeholder':'Sugar','desc':'Nominal 0-5'},
+                        {'name':'rbc','placeholder':'Red Blood Cells','desc':'Normal or Abnormal'},
+                        {'name':'pc','placeholder':'Pus Cell','desc':'Normal or Abnormal'},
+                        {'name':'pcc','placeholder':'Pus Cell Clumps','desc':'Present or Not Present'},
+                        {'name':'ba','placeholder':'Bacteria','desc':'Present or Not Present'},
+                        {'name':'bgr','placeholder':'Blood Glucose Random','desc':'Numerical in mgs/dl'},
+                        {'name':'bu','placeholder':'Blood Urea','desc':'Numerical in mgs/dl'},
+                        {'name':'sc','placeholder':'Serum Creatinine','desc':'Numerical in mgs/dl'},
+                        {'name':'pot','placeholder':'Potassium','desc':'Numerical in mEq/L'},
+                        {'name':'wc','placeholder':'White Blood Cell Count','desc':'Cells/cumm'},
+                        {'name':'htn','placeholder':'Hypertension','desc':'Yes or No'},
+                        {'name':'dm','placeholder':'Diabetes Mellitus','desc':'Yes or No'},
+                        {'name':'cad','placeholder':'Coronary Artery Disease','desc':'Yes or No'},
+                        {'name':'pe','placeholder':'Pedal Edema','desc':'Yes or No'},
+                        {'name':'ane','placeholder':'Anemia','desc':'Yes or No'}
+                    ] %}
+
+                    <div class="row">
+                        {% for field in fields %}
+                        <div class="col-md-4 mb-3">
+                            <input type="text" name="{{ field.name }}" class="form-control form-control-lg"
+                                   placeholder="{{ field.placeholder }}"
+                                   style="border-radius: 0.75rem; border: none; background: rgba(255,255,255,0.05); color: #e0e0e0; padding: 0.75rem 1rem; box-shadow: inset 0 0 10px rgba(0, 255, 255, 0.2);">
+                            {% if field.desc %}
+                            <small class="form-text text-light">{{ field.desc }}</small>
+                            {% endif %}
                         </div>
+                        {% endfor %}
                     </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <input style="border: 1px solid black;" class="form-control" type="text" name="bp" placeholder="bp">
-                            <p>Blood Pressure(numerical) in mm/Hg</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <input style="border: 1px solid black;" class="form-control" type="text" name="al" placeholder="al">
-                            <p>Albumin(nominal)-(0,1,2,3,4,5)</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <input style="border: 1px solid black;" class="form-control" type="text" name="su" placeholder="su">
-                            <p>Sugar(nominal)-(0,1,2,3,4,5)</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <input style="border: 1px solid black;" class="form-control" type="text" name="rbc" placeholder="rbc">
-                            <p>Red Blood Cells(nominal)-(normal,abnormal)</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <input style="border: 1px solid black;" class="form-control" type="text" name="pc" placeholder="pc">
-                            <p>Pus Cell (nominal)-(normal,abnormal)</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <input style="border: 1px solid black;" class="form-control" type="text" name="pcc" placeholder="pcc">
-                            <p>Pus Cell clumps(nominal)-(present,notpresent)</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <input style="border: 1px solid black;" class="form-control" type="text" name="ba" placeholder="ba">
-                            <p>Bacteria(nominal)-(present,notpresent)</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <input style="border: 1px solid black;" class="form-control" type="text" name="bgr" placeholder="bgr">
-                            <p>Blood Glucose Random(numerical) in mgs/dl</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <input style="border: 1px solid black;" class="form-control" type="text" name="bu" placeholder="bu">
-                            <p>Blood Urea(numerical) in mgs/dl</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <input style="border: 1px solid black;" class="form-control" type="text" name="sc" placeholder="sc">
-                            <p>Serum Creatinine(numerical) in mgs/dl</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <input style="border: 1px solid black;" class="form-control" type="text" name="pot" placeholder="pot">
-                            <p>Potassium(numerical) in mEq/L</p>
-                            <p></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <input style="border: 1px solid black;" class="form-control" type="text" name="wc" placeholder="wc">
-                            <p>White Blood Cell Count(numerical) in cells/cumm</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <input style="border: 1px solid black;" class="form-control" type="text" name="htn" placeholder="htn">
-                            <p>Hypertension(nominal)-(yes,no)</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <input style="border: 1px solid black;" class="form-control" type="text" name="dm" placeholder="dm">
-                            <p>Diabetes Mellitus(nominal)-(yes,no)</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <input style="border: 1px solid black;" class="form-control" type="text" name="cad" placeholder="cad">
-                            <p>Coronary Artery Disease(nominal)-(yes,no)</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <input style="border: 1px solid black;" class="form-control" type="text" name="pe" placeholder="pe">
-                            <p>Pedal Edema(nominal)-(yes,no)</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <input style="border: 1px solid black;" class="form-control" type="text" name="ane" placeholder="ane">
-                            <p>Anemia(nominal)-(yes,no)</p>
-                        </div>
-                    </div>
-                </div>
-                <input type="submit" class="btn btn-info btn-block" value="Predict">
-            </form>
+
+                    <button type="submit" class="btn btn-gradient w-100 py-2 fw-bold mt-3" style="border-radius: 0.75rem; font-size: 1.1rem;">
+                        Predict
+                    </button>
+                </form>
+
+            </div>
         </div>
     </div>
-    <div class="col-md-2"></div>
 </div>
+
+<!-- Background -->
+<div style="position: fixed; top:0; left:0; width:100%; height:100%; z-index:1; overflow:hidden;">
+    <div style="width:100%; height:100%; background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);"></div>
+    <svg style="position:absolute; top:0; left:0; width:100%; height:100%;">
+        <defs>
+            <pattern id="dots" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse">
+                <circle cx="2" cy="2" r="1.5" fill="rgba(255,255,255,0.05)" />
+            </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#dots)" />
+    </svg>
+</div>
+
+<style>
+/* Button Gradient and Hover */
+.btn-gradient {
+    background: linear-gradient(135deg, #00ffd5, #0077ff);
+    color: #fff;
+    border: none;
+    transition: all 0.3s ease;
+    font-weight: 600;
+}
+.btn-gradient:hover {
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 8px 20px rgba(0, 255, 255, 0.4);
+}
+/* Placeholder Styling */
+input::placeholder {
+    color: rgba(224,224,224,0.6) !important;
+}
+/* Card Text */
+.card small {
+    color: rgba(224,224,224,0.7);
+}
+/* Smooth font */
+body {
+    font-family: 'Poppins', sans-serif;
+}
+</style>
 
 {% endblock %}

@@ -1,210 +1,108 @@
 {% extends 'main.html' %}
 {% block content %}
+
 {% if message %}
-        <div class="alert alert-danger">{{ message }}</div>
-    {% endif %}
-<div class="container">
-    <div class="card card-body" style="border: 1px solid black; box-shadow: 0 0 10px black;">
-        <h2>This is basic Machine Learning and Deep Learning based WebApp.</h2>
-        <p>These Machine Learning models and Deep Leaning models are trained on large datasets and thousands of images.</p>
-        <br>
-        <h2>Model Accuracies:</h2>
-        <ul>
-            <li>Diabetes Model: <strong>98.25%</strong></li>
-            <li>Breast Cancer Model: <strong>98.25%</strong></li>
-            <li>Heart Disease Model: <strong>85.25%</strong></li>
-            <li>Kidney Disease Model: <strong>99%</strong></li>
-            <li>Liver Disease Model: <strong>78%</strong></li>
-            <li>Malaria Model: <strong>96%</strong></li>
-            <li>Pneumonia Model: <strong>95%</strong></li>
-        </ul>
-        <br>
-        <h3>Information about the Diseases which this webApp can predict.</h3>
-        <br>
-        <div class="row">
-            <div class="col-md-12 card card-body" style="box-shadow: 0 0 5px black; margin: 5px;">
-                <h4>Diabetes</h4>
-                <p>Diabetes is a disease that occurs when your blood glucose, also called blood sugar, is too high. Blood glucose is your main source of energy and comes from the food you eat. Insulin, a hormone made by the pancreas, helps glucose from food get into your cells to be used for energy. Sometimes your body doesn’t make enough—or any—insulin or doesn’t use insulin well. Glucose then stays in your blood and doesn’t reach your cells.</p>
-                <h5>Symptoms</h5>
-                <ul>
-                    <li>Urinating often.</li>
-                    <li>Feeling very thirsty.</li>
-                    <li>Extreme fatigue.</li>
-                    <li>Blurry vision.</li>
-                </ul>
-            </div>
-        </div>
-        <br>
-        <div class="row">
-            <div class="col-md-12 card card-body" style="box-shadow: 0 0 5px black; margin: 5px;">
-                <h4>Breast Cancer</h4>
-                <p>Breast cancer is cancer that forms in the cells of the breasts.
+<div class="alert alert-danger">{{ message }}</div>
+{% endif %}
 
-                    After skin cancer, breast cancer is the most common cancer diagnosed in women in the United States. Breast cancer can occur in both men and women, but it's far more common in women.</p>
-                <h5>Symptoms</h5>
-                <ul>
-                    <li>A breast lump or thickening that feels different from the surrounding tissue</li>
-                    <li>Change in the size, shape or appearance of a breast</li>
-                    <li>Changes to the skin over the breast, such as dimpling</li>
-                    <li>Redness or pitting of the skin over your breast, like the skin of an orange</li>
-                </ul>
-            </div>
-        </div>
+<!-- Page Container -->
+<div class="container my-5" style="position: relative; z-index: 2;">
 
-        <br>
-        <div class="row">
-            <div class="col-md-12 card card-body" style="box-shadow: 0 0 5px black; margin: 5px;">
-                <h4>Chronic kidney disease</h4>
-                <p>Chronic kidney disease, also called chronic kidney failure, describes the gradual loss of kidney function. Your kidneys filter wastes and excess fluids from your blood, which are then excreted in your urine. When chronic kidney disease reaches an advanced stage, dangerous levels of fluid, electrolytes and wastes can build up in your body.</p>
-                <h5>Symptoms</h5>
-                <ul>
-                    <li>Nausea</li>
-                    <li>Vomiting</li>
-                    <li>Fatigue and weakness</li>
-                    <li>Muscle twitches and cramps</li>
-                </ul>
-            </div>
-        </div>
-
-        <br>
-        <div class="row">
-            <div class="col-md-12 card card-body" style="box-shadow: 0 0 5px black; margin: 5px;">
-                <h4>Liver disease</h4>
-                <p>Symptoms of liver disease can vary, but they often include swelling of the abdomen and legs, bruising easily, changes in the color of your stool and urine, and jaundice, or yellowing of the skin and eyes. Sometimes there are no symptoms. Tests such as imaging tests and liver function tests can check for liver damage and help to diagnose liver diseases.</p>
-            </div>
-        </div>
-
-        <br>
-        <div class="row">
-            <div class="col-md-12 card card-body" style="box-shadow: 0 0 5px black; margin: 5px;">
-                <h4>Malaria</h4>
-                <p>Malaria is a mosquito-borne infectious disease that affects humans and other animals. Malaria causes symptoms that typically include fever, tiredness, vomiting, and headaches. In severe cases it can cause yellow skin, seizures, coma, or death. Symptoms usually begin ten to fifteen days after being bitten by an infected mosquito. If not properly treated, people may have recurrences of the disease months later.</p>
-                <h5>Symptoms</h5>
-                <ul>
-                    <li>Fever. This is the most common symptom.</li>
-                    <li>Chills</li>
-                    <li>Headache</li>
-                    <li>Nausea and vomiting</li>
-                </ul>
-            </div>
-        </div>
-
-        <br>
-        <div class="row">
-            <div class="col-md-12 card card-body" style="box-shadow: 0 0 5px black; margin: 5px;">
-                <h4>Pneumonia</h4>
-                <p>Pneumonia is an infection that inflames the air sacs in one or both lungs. The air sacs may fill with fluid or pus (purulent material), causing cough with phlegm or pus, fever, chills, and difficulty breathing. A variety of organisms, including bacteria, viruses and fungi, can cause pneumonia.</p>
-                <h5>Symptoms</h5>
-                <ul>
-                    <li>Cough, which may produce greenish, yellow or even bloody mucus.</li>
-                    <li>Fever, sweating and shaking chills.</li>
-                    <li>Shortness of breath.</li>
-                    <li>Rapid, shallow breathing.</li>
-                </ul>
-            </div>
-        </div>
-
+    <!-- Intro Section -->
+    <div class="text-center mb-5">
+        <h1 class="fw-bold mb-2" style="background: linear-gradient(90deg, #00c6ff, #0072ff); -webkit-background-clip: text; color: transparent;">
+            ML & DL Health Predictor
+        </h1>
+        <p class="lead text-dark">
+            Predict multiple diseases using AI models trained on thousands of real-world data points and images.
+        </p>
+        <p class="text-muted small fst-italic">
+            Disclaimer: This tool is for research and educational purposes only. It is not a substitute for professional medical advice, diagnosis, or treatment.
+        </p>
     </div>
 
-    
+    <!-- Model Accuracies -->
+    <div class="row g-4 mb-5">
+        {% set models = [
+            {'name': 'Heart Disease', 'accuracy': '85.25%'},
+            {'name': 'Kidney Disease', 'accuracy': '99%'},
+            {'name': 'Liver Disease', 'accuracy': '78%'},
+            {'name': 'Malaria', 'accuracy': '96%'},
+            {'name': 'Pneumonia', 'accuracy': '95%'}
+        ] %}
+        {% for model in models %}
+        <div class="col-md-4 col-sm-6">
+            <div class="card text-center p-4 shadow-sm border-0 rounded-4 hover-scale" 
+                 style="background: #ffffff; color: #333; transition: all 0.3s;">
+                <h5 class="fw-bold mb-2" style="color: #0072ff;">{{ model.name }}</h5>
+                <span class="badge" style="background: linear-gradient(90deg, #00c6ff, #0072ff); color: white; font-size: 1rem;">{{ model.accuracy }}</span>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+<!-- Model Links Section -->
+<div class="text-center mb-4">
+    <h4 class="fw-semibold mb-3" style="color: #0072ff;">Jump to a Predictor</h4>
+    <div class="d-flex justify-content-center flex-wrap gap-2">
+        <a href="{{ url_for('heartPage') }}" class="btn btn-outline-primary btn-sm px-3 py-2 rounded-pill">Heart</a>
+        <a href="{{ url_for('kidneyPage') }}" class="btn btn-outline-primary btn-sm px-3 py-2 rounded-pill">Kidney</a>
+        <a href="{{ url_for('liverPage') }}" class="btn btn-outline-primary btn-sm px-3 py-2 rounded-pill">Liver</a>
+        <a href="{{ url_for('malariaPage') }}" class="btn btn-outline-primary btn-sm px-3 py-2 rounded-pill">Malaria</a>
+        <a href="{{ url_for('pneumoniaPage') }}" class="btn btn-outline-primary btn-sm px-3 py-2 rounded-pill">Pneumonia</a>
+    </div>
+</div>
 
 
 
+    <!-- Diseases Section -->
+    <h3 class="text-center mb-4 fw-semibold text-dark">Disease Information</h3>
 
-<br><br>
-     <div class="card card-body" style="border: 1px solid black; box-shadow: 0 0 10px black;">
-       
+    {% set diseases = [
+        {'name': 'Heart Disease', 'desc': 'Risk of cardiovascular problems affecting heart function.', 'symptoms': ['Chest pain', 'Shortness of breath', 'Fatigue', 'Irregular heartbeat'], 'icon':'bi-heart-fill'},
+        {'name': 'Chronic Kidney Disease', 'desc': 'Gradual loss of kidney function.', 'symptoms': ['Nausea', 'Vomiting', 'Fatigue', 'Muscle cramps'], 'icon':'bi-water'},
+        {'name': 'Liver Disease', 'desc': 'Swelling, bruising, jaundice, or abnormal stool/urine.', 'symptoms': ['Fatigue', 'Abdominal pain', 'Nausea', 'Jaundice'], 'icon':'bi-patch-check-fill'},
+        {'name': 'Malaria', 'desc': 'Mosquito-borne disease causing fever and fatigue.', 'symptoms': ['Fever', 'Chills', 'Headache', 'Nausea'], 'icon':'bi-bug-fill'},
+        {'name': 'Pneumonia', 'desc': 'Lung infection causing cough, fever, and breathing issues.', 'symptoms': ['Cough with mucus', 'Fever', 'Shortness of breath', 'Rapid breathing'], 'icon':'bi-cloud-drizzle-fill'}
+    ] %}
 
-        <br>
-        <div class="row">
-            <div class="col-md-12 card card-body" style="box-shadow: 0 0 5px black; margin: 5px;">
-                <h4>Diabetes</h4>
-                <p>Diabetes is a disease that occurs when your blood glucose, also called blood sugar, is too high. Blood glucose is your main source of energy and comes from the food you eat. Insulin, a hormone made by the pancreas, helps glucose from food get into your cells to be used for energy. Sometimes your body doesn’t make enough—or any—insulin or doesn’t use insulin well. Glucose then stays in your blood and doesn’t reach your cells.</p>
-                <h5>Symptoms</h5>
-                <ul>
-                    <li>Urinating often.</li>
-                    <li>Feeling very thirsty.</li>
-                    <li>Extreme fatigue.</li>
-                    <li>Blurry vision.</li>
+    <div class="row g-4">
+        {% for disease in diseases %}
+        <div class="col-lg-6">
+            <div class="card p-4 shadow-sm rounded-4 border-0 hover-scale" style="background: #ffffff; color: #333; transition: all 0.3s;">
+                <div class="d-flex align-items-center mb-3">
+                    <i class="bi {{ disease.icon }} fs-2 text-info me-3"></i>
+                    <h4 class="fw-bold mb-0">{{ disease.name }}</h4>
+                </div>
+                <p>{{ disease.desc }}</p>
+                {% if disease.symptoms %}
+                <ul class="list-unstyled">
+                    {% for symptom in disease.symptoms %}
+                    <li class="mb-1"><i class="bi bi-check-circle-fill text-success me-2"></i>{{ symptom }}</li>
+                    {% endfor %}
                 </ul>
+                {% endif %}
             </div>
         </div>
-        <br>
-        <div class="row">
-            <div class="col-md-12 card card-body" style="box-shadow: 0 0 5px black; margin: 5px;">
-                <h4>Breast Cancer</h4>
-                <p>Breast cancer is cancer that forms in the cells of the breasts.
-
-                    After skin cancer, breast cancer is the most common cancer diagnosed in women in the United States. Breast cancer can occur in both men and women, but it's far more common in women.</p>
-                <h5>Symptoms</h5>
-                <ul>
-                    <li>A breast lump or thickening that feels different from the surrounding tissue</li>
-                    <li>Change in the size, shape or appearance of a breast</li>
-                    <li>Changes to the skin over the breast, such as dimpling</li>
-                    <li>Redness or pitting of the skin over your breast, like the skin of an orange</li>
-                </ul>
-            </div>
-        </div>
-
-        <br>
-        <div class="row">
-            <div class="col-md-12 card card-body" style="box-shadow: 0 0 5px black; margin: 5px;">
-                <h4>Chronic kidney disease</h4>
-                <p>Chronic kidney disease, also called chronic kidney failure, describes the gradual loss of kidney function. Your kidneys filter wastes and excess fluids from your blood, which are then excreted in your urine. When chronic kidney disease reaches an advanced stage, dangerous levels of fluid, electrolytes and wastes can build up in your body.</p>
-                <h5>Symptoms</h5>
-                <ul>
-                    <li>Nausea</li>
-                    <li>Vomiting</li>
-                    <li>Fatigue and weakness</li>
-                    <li>Muscle twitches and cramps</li>
-                </ul>
-            </div>
-        </div>
-
-        <br>
-        <div class="row">
-            <div class="col-md-12 card card-body" style="box-shadow: 0 0 5px black; margin: 5px;">
-                <h4>Liver disease</h4>
-                <p>Symptoms of liver disease can vary, but they often include swelling of the abdomen and legs, bruising easily, changes in the color of your stool and urine, and jaundice, or yellowing of the skin and eyes. Sometimes there are no symptoms. Tests such as imaging tests and liver function tests can check for liver damage and help to diagnose liver diseases.</p>
-            </div>
-        </div>
-
-        <br>
-        <div class="row">
-            <div class="col-md-12 card card-body" style="box-shadow: 0 0 5px black; margin: 5px;">
-                <h4>Malaria</h4>
-                <p>Malaria is a mosquito-borne infectious disease that affects humans and other animals. Malaria causes symptoms that typically include fever, tiredness, vomiting, and headaches. In severe cases it can cause yellow skin, seizures, coma, or death. Symptoms usually begin ten to fifteen days after being bitten by an infected mosquito. If not properly treated, people may have recurrences of the disease months later.</p>
-                <h5>Symptoms</h5>
-                <ul>
-                    <li>Fever. This is the most common symptom.</li>
-                    <li>Chills</li>
-                    <li>Headache</li>
-                    <li>Nausea and vomiting</li>
-                </ul>
-            </div>
-        </div>
-
-        <br>
-        <div class="row">
-            <div class="col-md-12 card card-body" style="box-shadow: 0 0 5px black; margin: 5px;">
-                <h4>Pneumonia</h4>
-                <p>Pneumonia is an infection that inflames the air sacs in one or both lungs. The air sacs may fill with fluid or pus (purulent material), causing cough with phlegm or pus, fever, chills, and difficulty breathing. A variety of organisms, including bacteria, viruses and fungi, can cause pneumonia.</p>
-                <h5>Symptoms</h5>
-                <ul>
-                    <li>Cough, which may produce greenish, yellow or even bloody mucus.</li>
-                    <li>Fever, sweating and shaking chills.</li>
-                    <li>Shortness of breath.</li>
-                    <li>Rapid, shallow breathing.</li>
-                </ul>
-            </div>
-        </div>
-
-
-
-
-
-
-
+        {% endfor %}
+    </div>
 
 </div>
+
+<!-- Background -->
+<div style="position: fixed; top:0; left:0; width:100%; height:100%; z-index:1; background: #f5f7fa; overflow:hidden;"></div>
+
+<style>
+.hover-scale:hover {
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.15) !important;
+}
+p, ul, li {
+    color: #333 !important;
+}
+</style>
+
+<!-- Bootstrap Icons CDN -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
 {% endblock %}
