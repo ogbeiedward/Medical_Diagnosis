@@ -48,6 +48,31 @@ function readURL(input) {
     </div>
 </div>
 
+
+<div class="text-center mt-5">
+    <h4 class="text-light mb-3">Try with sample X-Ray images:</h4>
+    <div class="d-flex justify-content-center gap-4">
+        <div>
+            <p class="text-light fw-bold">Normal</p>
+            <a href="{{ url_for('static', filename='img/Normal.jpeg') }}" download>
+                <img src="{{ url_for('static', filename='img/Normal.jpeg') }}" 
+                     alt="Normal X-ray" class="img-thumbnail shadow" 
+                     style="max-width:200px; border-radius:0.75rem;">
+            </a>
+        </div>
+        <div>
+            <p class="text-light fw-bold">Pneumonia</p>
+            <a href="{{ url_for('static', filename='img/Pneumonia.jpeg') }}" download>
+                <img src="{{ url_for('static', filename='img/Pneumonia.jpeg') }}" 
+                     alt="Pneumonia X-ray" class="img-thumbnail shadow" 
+                     style="max-width:200px; border-radius:0.75rem;">
+            </a>
+        </div>
+    </div>
+    <p class="text-light mt-3">Click an image to download, then upload it above to test the predictor.</p>
+</div>
+
+
 <!-- Background -->
 <div style="position: fixed; top:0; left:0; width:100%; height:100%; z-index:1; background: linear-gradient(135deg, #1e3c72, #2a5298); overflow:hidden;">
     <svg style="position:absolute; top:0; left:0; width:100%; height:100%;">
